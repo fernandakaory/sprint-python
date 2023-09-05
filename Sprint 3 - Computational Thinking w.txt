@@ -1,0 +1,25 @@
+Sprint 3 - Computational Thinking with Python
+Projeto realizado para a entrega da terceira sprint do Challenge com a empresa IBM.
+
+Integrantes do grupo
+Fernanda Kaory Saito – RM 551104
+Geovanna Silva Cunha – RM 97736
+Lana Giulia Auada Leite – RM 551143
+Mirella de Rossi Imenez – RM 97990
+
+Funcionalidades implementadas com Python.
+A partir da solução proposta para o challenge, utilizamos do Python para desenvolver o setor de feedbacks que estará presente na plataforma.Esta área de avaliação foi criada com o intuíto de ser simples de utilizar e dinâmica para garantir uma boa experiência ao usuário.
+
+Em suas avaliações, aquele que utilizar a plataforma poderá escolher se deseja avaliar a estrutra do ônibus, sua rota atual, pontualidade ou a experiência com o nosso 
+aplicativo/site . Além disso, haverá a possibilidade de contatar o SAC para outras reclamações, sugestões e esclarecimento de dúvidas. As notas do feedback valerão 
+de 1 a 5, de forma que, quando um valor baixo (1-3) for selecionado, será solicitado ao usuário que comente os motivos para tal classificação.
+
+Nesta terceira sprint do challenge, utilizamos de conhecimentos adquiridos em sala como estruturas de repetição, tratamento de erros, listas, dicionários e regular expressions
+Assim,melhoramos a validação das informações da área de cadastro, utilizando de funções, de maneira que o usário precisará, obrigatoriamente, fornecer um nome sem npumeros, email com estrutura predefinida e uma senha de 6 dígitos. Diferentemente da verificação anterior, a atual verifica também se um campo estiver vazio. Todas as informações coletadas nessa etapa são armazenadas em um dicionário, para serem exibidas ao final da operação.
+
+Criamos uma função para o armazenamento dos dados do feedback, que recebe como parâmetro o nome do tópico avaliado e retorna a variável erro, caso exista, para o tratamento de erros. Desta forma, otimizamos a coleta dos dados da avaliação e diminuímos consideravelmente o tamanho do código.
+
+Foi mantida a  estrutura de repetição "while" que transforma o menu em um loop que permite o cliente avaliar quantos requisitos quiser em um único atendimento e utilizamos de listas para a exibição do resumo da sessão do usuário. Além disso, foi utilizado o tratamento de erros também para certificarmos que o cliente não irá inserir um
+número inválido em sua avaliação.
+
+Adicionamos novas verificações, para garantir que todas as informações inseridas e manipuladas sejam válidas. Assim, o valor do tópico escolhido pelo usuário para ser avaliado é adicionado a uma lista, para que, caso escolhido novamente, não seja possível avalia-lo uma segunda vez.
