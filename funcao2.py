@@ -30,10 +30,10 @@ def recebeNota(avaliacao):
         print("\nSentimos muito por isso. Por favor, conte-nos o motivo dessa nota.")
         motivo = input()
         print("\nObrigado pelo feedback!")
-        msgFinal.append(f"Você avaliou nota {nota} para {avaliacao}.\nMotivo: {motivo}\n")
+        msgFinal.append(f"\nVocê avaliou nota {nota} para {avaliacao}.\nMotivo: {motivo}")
     elif nota>=3 and nota <=5:
         print("Ficamos felizes com isso. Obrigado pelo feedback!")
-        msgFinal.append(f"Você avaliou nota {nota} para {avaliacao}.\n")
+        msgFinal.append(f"\nVocê avaliou nota {nota} para {avaliacao}.")
     else:
         erro= "Por favor, digite um número válido"
         return erro
@@ -66,42 +66,43 @@ try:
     print("\nVocê está no ônibus ST23. Rota Vila Mariana.")
     while continua.lower() == "sim":
         print("\nDigite 1 para avaliar as condições do ônibus.\nDigite 2 para avaliar a rota atual.\nDigite 3 para avaliar sua experiência usando o aplicativo.\nDigite 4 para avaliar a pontualidade do ônibus.\nDigite 5 para entrar em contato com o SAC.")
-        escolha = int(input())
+        escolha = input()
 
 # menu de escolhas
         if escolha not in avaliados:
-            if escolha == 1:
+            if escolha == "1":
                 erro = recebeNota("condição do ônibus")
                 if erro:
                     raise ValueError
 
-            elif escolha==2:
+            elif escolha == "2":
                 erro = recebeNota("rota atual")
                 if erro:
                     raise ValueError
 
-            elif escolha==3:
+            elif escolha == "3":
                 erro = recebeNota("experiência usando o aplicativo")
                 if erro:
                     raise ValueError
 
-            elif escolha==4:
+            elif escolha == "4":
                 erro = recebeNota("pontualidade do ônibus")
                 if erro:
                     raise ValueError
 
-            elif escolha==5:
+            elif escolha == "5":
                 print("\nInsira a mensagem.")
                 sac = input()
                 print("\nIremos responder o mais rápido possível. Obrigado por utilizar nossos serviços.")
-                msgFinal.append(f"Você contatou o SAC.\nMensagem enviada:{sac}\n")
+                msgFinal.append(f"\nVocê contatou o SAC.\nMensagem enviada:{sac}")
             
             else:
                 erro= "Por favor, digite uma opção válida."
                 raise ValueError
+            
             avaliados.append(escolha)
         else:
-            print("Você já avaliou este tópico.")
+            print("\nVocê já avaliou este tópico.")
         
     #pergunta se quer continuar avaliando
         continua = input("\nVocê deseja fazer uma nova avaliação? (Digite 'sim' ou 'não') ")
@@ -120,6 +121,6 @@ try:
     print("*" * 70)
     print("\nObrigada por avaliar os serviços da SmarTech.")
 except ValueError:
-    print(erro)
+    print(f"\n{erro}")
 finally:
     print("Fim da sessão de feedback")
