@@ -1,5 +1,6 @@
-import re
-from funcoes import validaNome, validaEmail, validaSenha, recebeNota
+import json
+import os
+from funcoes import *
 
 continua = "sim"
 msgFinal = []
@@ -32,7 +33,31 @@ try:
             "email": email,
             "senha": senha
         }
+
+        with open(f'{email}.json', 'w', encoding='utf-8') as arquivo:
+            json.dump(infoCliente,arquivo)
+
+    elif cadastro=="sim":
+        email = input("Informe seu e-mail: ")
+        erro = validaEmail(email)
+        if erro:
+            raise ValueError(erro)
         
+        if os.path.exists(f'{email}.json'):
+            with open(f'{email}.json', 'r', encoding='utf-8') as arquivo:
+                infocadastro = json.loads(arquivo.read())
+                senha = input("Crie uma senha de 6 dígitos: ")
+                erro = validaSenha(senha)
+                if erro:
+                    raise ValueError(erro)
+                if email == infocadastro['email'] and senha == infocadastro['senha']:
+                    print(f"Acesso permitido! Bem-vindo(a), {infocadastro['nome']}")
+                else:
+                    erro = "Senha incorreta"
+                    raise ValueError
+        else:
+            erro = "E-mail incorreto"
+            raise FileNotFoundError  
 
     print("\nVocê está no ônibus ST23. Rota Vila Mariana.")
     while continua.lower() == "sim":
@@ -92,6 +117,8 @@ try:
     print("*" * 70)
     print("\nObrigada por avaliar os serviços da SmarTech.")
 except ValueError:
+    print(f"\n{erro}")
+except FileNotFoundError:
     print(f"\n{erro}")
 finally:
     print("Fim da sessão de feedback")
