@@ -1,5 +1,5 @@
-import json
 import os
+import json
 from funcoes import *
 
 continua = "sim"
@@ -33,9 +33,12 @@ try:
             "email": email,
             "senha": senha
         }
-
-        with open(f'{email}.json', 'w', encoding='utf-8') as arquivo:
-            json.dump(infoCliente,arquivo)
+        if os.path.exists(f'{email}.json'):
+            erro = "Email já cadastrado."
+            raise FileNotFoundError
+        else:
+            with open(f'{email}.json', 'w', encoding='utf-8') as arquivo:
+                json.dump(infoCliente,arquivo)
 
     elif cadastro=="sim":
         email = input("Informe seu e-mail: ")
@@ -107,18 +110,24 @@ try:
             raise ValueError
         
     #exibe as mensagens finais
+    with open(f'{email}.json', 'r', encoding='utf-8') as arquivo:
+        infocadastro = json.loads(arquivo.read())
     print("*" * 70)
     print("INFORMAÇÕES DO CLIENTE:")
-    print(f"Nome: {infoCliente['nome']}")
-    print(f"E-mail: {infoCliente['email']}")
+    print(f"Nome: {infocadastro['nome']}")
+    print(f"E-mail: {infocadastro['email']}")
     print("*" * 70)
     for i in range(len(msgFinal)):
         print(msgFinal[i])
     print("*" * 70)
     print("\nObrigada por avaliar os serviços da SmarTech.")
+
 except ValueError:
     print(f"\n{erro}")
 except FileNotFoundError:
     print(f"\n{erro}")
+except FileExistsError:
+    print(f"\n{erro}")
+
 finally:
     print("Fim da sessão de feedback")
