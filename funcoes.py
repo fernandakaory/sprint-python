@@ -38,18 +38,18 @@ def recebeNota(avaliacao, msgFinal, positivos,negativos):
         return erro
 
 def insereFeedback (nome, positivos, negativos, listaSac):
-    if positivos !="":
+    if positivos != []:
         with open('feedbacks/positivos.txt', 'a',encoding='utf-8 ') as arquivo:
-            arquivo.write(nome)
+            arquivo.write(f'\n{nome}')
             for avaliacao in positivos:
                 arquivo.write(avaliacao)
-    if negativos!="":
+    if negativos!=[]:
         with open('feedbacks/negativos.txt', 'a',encoding='utf-8 ') as arquivo:
-            arquivo.write(nome)
+            arquivo.write(f'\n{nome}')
             for avaliacao in negativos:
                 arquivo.write(avaliacao)
-    if listaSac!="":
+    if listaSac!=[]:
         with open('feedbacks/sac.txt', 'a',encoding='utf-8 ') as arquivo:
-            arquivo.write(nome)
+            arquivo.write(f'\n{nome}')
             for mensagens in listaSac:
                 arquivo.write(mensagens)
