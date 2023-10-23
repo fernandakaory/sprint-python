@@ -16,6 +16,7 @@ de 1 a 5, de forma que, quando um valor baixo (1-3) for selecionado, será solic
 
 Nesta quarta sprint do challenge, utilizamos de conhecimentos adquiridos em sala como estruturas de repetição, tratamento de erros, listas, dicionários, regular expressions e manipulação de arquivos.
 Assim, aprimoramos a sessão de cadastro e login dos usuários. Agora, utilizando da manipulação de arquivos externos em formato json e de dicionários. O cliente deverá responder se já possui uma conta ou não. Caso a resposta seja negativa, ele precisará fornecer o nome, email e senha para que estas informações sejam armazenadas em um dicionário e posteriormente em um arquivo json (este receberá como nome o email inserido). Já se a resposta for positiva, o indivíduo precisará informar o email e a senha que serão comparados aos existentes nos arquivos externos.
+Para um melhor uso dos recursos de manipulação de arquivos, criamos documentos para armazenarmos os feedbacks positivos e negativos e as mensagens do SAC separadamente. Poderemos, assim, analisar as avaliações e mensagens de forma mais prática e organizada.
 
 Criamos outro arquivo chamado "funcoes" para alocar todas as funções utilizadas no código principal, com o intuíto de organiza-lo e torna-lo mais legível e de fácil entendimento.
 

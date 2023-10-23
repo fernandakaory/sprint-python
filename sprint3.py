@@ -5,9 +5,12 @@ from funcoes import *
 continua = "sim"
 msgFinal = []
 avaliados = []
+positivos = []
+negativos = []
+listaSac = []
 
 try:
-    cadastro = input("Você já possui cadastro? (Digite 'sim' ou 'não')").lower()
+    cadastro = input("Você já possui cadastro? (Digite 'sim' ou 'não') ").lower()
 
     if cadastro == "não":
         #área de cadastro e validação 
@@ -33,11 +36,11 @@ try:
             "email": email,
             "senha": senha
         }
-        if os.path.exists(f'{email}.json'):
+        if os.path.exists(f'usuarios/{email}.json'):
             erro = "Email já cadastrado."
             raise FileNotFoundError
         else:
-            with open(f'{email}.json', 'w', encoding='utf-8') as arquivo:
+            with open(f'usuarios/{email}.json', 'w', encoding='utf-8') as arquivo:
                 json.dump(infoCliente,arquivo)
 
     elif cadastro=="sim":
@@ -46,8 +49,8 @@ try:
         if erro:
             raise ValueError(erro)
         
-        if os.path.exists(f'{email}.json'):
-            with open(f'{email}.json', 'r', encoding='utf-8') as arquivo:
+        if os.path.exists(f'usuarios/{email}.json'):
+            with open(f'usuarios/{email}.json', 'r', encoding='utf-8') as arquivo:
                 infocadastro = json.loads(arquivo.read())
                 senha = input("Digite sua senha de 6 dígitos: ")
                 erro = validaSenha(senha)
@@ -70,22 +73,22 @@ try:
 # menu de escolhas
         if escolha not in avaliados:
             if escolha == "1":
-                erro = recebeNota("condição do ônibus",msgFinal)
+                erro = recebeNota("condição do ônibus",msgFinal,positivos,negativos)
                 if erro:
                     raise ValueError
 
             elif escolha == "2":
-                erro = recebeNota("rota atual",msgFinal)
+                erro = recebeNota("rota atual",msgFinal,positivos,negativos)
                 if erro:
                     raise ValueError
 
             elif escolha == "3":
-                erro = recebeNota("experiência usando o aplicativo",msgFinal)
+                erro = recebeNota("experiência usando o aplicativo",msgFinal,positivos,negativos)
                 if erro:
                     raise ValueError
 
             elif escolha == "4":
-                erro = recebeNota("pontualidade do ônibus",msgFinal)
+                erro = recebeNota("pontualidade do ônibus",msgFinal,positivos,negativos)
                 if erro:
                     raise ValueError
 
@@ -94,6 +97,7 @@ try:
                 sac = input()
                 print("\nIremos responder o mais rápido possível. Obrigado por utilizar nossos serviços.")
                 msgFinal.append(f"\nVocê contatou o SAC.\nMensagem enviada:{sac}")
+                listaSac.append(f"\nContatou o SAC.\nMensagem enviada:{sac}")
             
             else:
                 erro= "Por favor, digite uma opção válida."
@@ -110,7 +114,7 @@ try:
             raise ValueError
         
     #exibe as mensagens finais
-    with open(f'{email}.json', 'r', encoding='utf-8') as arquivo:
+    with open(f'usuarios/{email}.json', 'r', encoding='utf-8') as arquivo:
         infocadastro = json.loads(arquivo.read())
     print("*" * 70)
     print("INFORMAÇÕES DO CLIENTE:")
@@ -121,6 +125,9 @@ try:
         print(msgFinal[i])
     print("*" * 70)
     print("\nObrigada por avaliar os serviços da SmarTech.")
+
+    #insera avaliações nos documentos de resumo de feedback
+    insereFeedback(infocadastro['nome'],positivos,negativos,listaSac)
 
 except ValueError:
     print(f"\n{erro}")
