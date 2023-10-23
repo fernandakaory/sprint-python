@@ -49,7 +49,7 @@ try:
         if os.path.exists(f'{email}.json'):
             with open(f'{email}.json', 'r', encoding='utf-8') as arquivo:
                 infocadastro = json.loads(arquivo.read())
-                senha = input("Crie uma senha de 6 dígitos: ")
+                senha = input("Digite sua senha de 6 dígitos: ")
                 erro = validaSenha(senha)
                 if erro:
                     raise ValueError(erro)
