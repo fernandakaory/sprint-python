@@ -14,10 +14,10 @@ Em suas avaliações, aquele que utilizar a plataforma poderá escolher se desej
 aplicativo/site . Além disso, haverá a possibilidade de contatar o SAC para outras reclamações, sugestões e esclarecimento de dúvidas. As notas do feedback valerão 
 de 1 a 5, de forma que, quando um valor baixo (1-3) for selecionado, será solicitado ao usuário que comente os motivos para tal classificação.
 
-Nesta quarta sprint do challenge, utilizamos de conhecimentos adquiridos em sala como estruturas de repetição, tratamento de erros, listas, dicionários, regular expressions e manipulação de arquivos.
+Nesta quarta sprint da Challenge, utilizamos de conhecimentos adquiridos em sala como estruturas de repetição, tratamento de erros, listas, dicionários, regular expressions e manipulação de arquivos.
 Assim, aprimoramos a sessão de cadastro e login dos usuários. Agora, utilizando da manipulação de arquivos externos em formato json e de dicionários. O cliente deverá responder se já possui uma conta ou não. Caso a resposta seja negativa, ele precisará fornecer o nome, email e senha para que estas informações sejam armazenadas em um dicionário e posteriormente em um arquivo json (este receberá como nome o email inserido). Já se a resposta for positiva, o indivíduo precisará informar o email e a senha que serão comparados aos existentes nos arquivos externos.
 Para um melhor uso dos recursos de manipulação de arquivos, criamos documentos para armazenarmos os feedbacks positivos e negativos e as mensagens do SAC separadamente. Poderemos, assim, analisar as avaliações e mensagens de forma mais prática e organizada.
 
-Criamos outro arquivo chamado "funcoes" para alocar todas as funções utilizadas no código principal, com o intuíto de organiza-lo e torna-lo mais legível e de fácil entendimento.
+Criamos outro arquivo chamado "funcoes" para alocar todas as funções utilizadas no código principal, com o intuíto de organiza-lo e torná-lo mais legível e de fácil entendimento.
 
 Foi mantida a  estrutura de repetição "while" que transforma o menu em um loop que permite o cliente avaliar quantos requisitos quiser em um único atendimento e utilizamos de listas para a exibição do resumo da sessão do usuário. Além disso, foi utilizado o tratamento de erros também para certificarmos que o cliente não irá informar o mesmo e-mail e modificar as informações já armazenadas nos arquivos e garantir que aquele e-mail fornecido no login já está mesmo cadstrada.
