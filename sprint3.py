@@ -36,6 +36,8 @@ try:
             "email": email,
             "senha": senha
         }
+
+        #verifica se o email já foi cadastrado
         if os.path.exists(f'usuarios/{email}.json'):
             erro = "Email já cadastrado."
             raise FileNotFoundError
@@ -44,6 +46,7 @@ try:
                 json.dump(infoCliente,arquivo)
 
     elif cadastro=="sim":
+        #verifica as informações do cadastro
         email = input("Informe seu e-mail: ")
         erro = validaEmail(email)
         if erro:

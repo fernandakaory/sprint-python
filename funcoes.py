@@ -40,7 +40,7 @@ def recebeNota(avaliacao, msgFinal, positivos,negativos):
 def insereFeedback (nome, positivos, negativos, listaSac):
     if positivos != []:
         with open('feedbacks/positivos.txt', 'a',encoding='utf-8 ') as arquivo:
-            arquivo.write(f'\n{nome}')
+            arquivo.write(f'\n\n{nome}')
             for avaliacao in positivos:
                 arquivo.write(avaliacao)
     if negativos!=[]:
