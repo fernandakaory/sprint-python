@@ -67,6 +67,10 @@ try:
         else:
             erro = "E-mail incorreto"
             raise FileNotFoundError  
+    else:
+        erro= "Por favor, digite sim ou não."
+        raise ValueError
+    
 
     print("\nVocê está no ônibus ST23. Rota Vila Mariana.")
     while continua.lower() == "sim":
