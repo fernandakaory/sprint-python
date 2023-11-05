@@ -135,6 +135,7 @@ try:
 
     #insera avaliações nos documentos de resumo de feedback
     insereFeedback(infocadastro['nome'],positivos,negativos,listaSac)
+    
 
 except ValueError:
     print(f"\n{erro}")
