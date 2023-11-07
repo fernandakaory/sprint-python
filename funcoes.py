@@ -3,7 +3,7 @@ import re
 def validaNome(nome):
     erro=""
     if re.search("\d",nome) or nome == '':
-        erro = "Campo obrigatório. Por favor, insira um nome válido, sem números."
+        erro = "Campo obrigatório.Por favor, insira um nome válido, sem números."
     return erro
 
 def validaEmail(email):
