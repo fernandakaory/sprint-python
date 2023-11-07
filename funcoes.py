@@ -20,7 +20,7 @@ def validaSenha(senha):
 
 def recebeNota(avaliacao, msgFinal, positivos,negativos):
     erro = ""
-    print(f"\nEscolha uma nota de 1 a 5 para avaliar {avaliacao}, sendo:\n1 - Péssima\n2 - Ruim\n3 - Mediana\n4 - Boa\n5- Excelente")
+    print(f"\nEscolha uma nota de 1 a 5 para avaliar {avaliacao}, sendo:\n1 - Péssima\n2 - Ruim\n3 - Mediana\n4 - Boa\n5 - Excelente")
     nota= int(input())
     if nota>0 and nota <= 3:
         print("\nSentimos muito por isso. Por favor, conte-nos o motivo dessa nota.")
