@@ -134,7 +134,7 @@ try:
     print("\nObrigada por avaliar os serviços da SmarTech.")
 
     #insera avaliações nos documentos de resumo de feedback
-    insereFeedback(infocadastro['nome'],positivos,negativos,listaSac)
+    insereFeedback(infocadastro['email'],positivos,negativos,listaSac)
     
 
 except ValueError:

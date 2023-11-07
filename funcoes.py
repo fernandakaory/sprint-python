@@ -37,23 +37,23 @@ def recebeNota(avaliacao, msgFinal, positivos,negativos):
         erro= "Por favor, digite um número válido"
         return erro
 
-def insereFeedback (nome, positivos, negativos, listaSac):
+def insereFeedback (email, positivos, negativos, listaSac):
     if positivos != []:
         with open('feedbacks/positivos.txt', 'a',encoding='utf-8 ') as arquivo:
-            arquivo.write(nome)
+            arquivo.write(email)
             for avaliacao in positivos:
                 arquivo.write(avaliacao)
             arquivo.write("\n ")
 
     if negativos!=[]:
         with open('feedbacks/negativos.txt', 'a',encoding='utf-8 ') as arquivo:
-            arquivo.write(nome)
+            arquivo.write(email)
             for avaliacao in negativos:
                 arquivo.write(avaliacao)
             arquivo.write("\n ")
     if listaSac!=[]:
         with open('feedbacks/sac.txt', 'a',encoding='utf-8 ') as arquivo:
-            arquivo.write(nome)
+            arquivo.write(email)
             for mensagens in listaSac:
                 arquivo.write(mensagens)
             arquivo.write("\n ")
