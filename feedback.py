@@ -31,6 +31,7 @@ try:
         if erro:
             raise ValueError(erro)
 
+        # as informações de cadastro do usuário novo são armazenadas no dicionário
         infoCliente = {
             "nome": nome,
             "email": email,
@@ -41,6 +42,7 @@ try:
         if os.path.exists(f'usuarios/{email}.json'):
             erro = "Email já cadastrado."
             raise FileNotFoundError
+        # armazena as informações do cliente em um documento json
         else:
             with open(f'usuarios/{email}.json', 'w', encoding='utf-8') as arquivo:
                 json.dump(infoCliente,arquivo)
@@ -52,6 +54,7 @@ try:
         if erro:
             raise ValueError(erro)
         
+        # se o cadastro com o email informado existir, o arquivo é lido e as informações são validadas para o login
         if os.path.exists(f'usuarios/{email}.json'):
             with open(f'usuarios/{email}.json', 'r', encoding='utf-8') as arquivo:
                 infocadastro = json.loads(arquivo.read())
@@ -64,6 +67,8 @@ try:
                 else:
                     erro = "Senha incorreta"
                     raise ValueError
+        
+        # caso o email não exista, é exibida a mensagem de erro
         else:
             erro = "E-mail incorreto"
             raise FileNotFoundError  
@@ -73,11 +78,14 @@ try:
     
 
     print("\nVocê está no ônibus ST23. Rota Vila Mariana.")
+    # loop do menu de escolhas do feedback
     while continua.lower() == "sim":
         print("\nDigite 1 para avaliar as condições do ônibus.\nDigite 2 para avaliar a rota atual.\nDigite 3 para avaliar sua experiência usando o aplicativo.\nDigite 4 para avaliar a pontualidade do ônibus.\nDigite 5 para entrar em contato com o SAC.")
         escolha = input()
 
 # menu de escolhas
+        # verifica se a opção escolhida está ou não na lista dos já avaliados
+        # se não estiver, prossegue para a avaliação
         if escolha not in avaliados:
             if escolha == "1":
                 erro = recebeNota("condição do ônibus",msgFinal,positivos,negativos)
@@ -114,16 +122,17 @@ try:
                 raise ValueError
             
             avaliados.append(escolha)
+        # se o tópico já foi avaliado exibe a mensagem e permite escolher outro para avaliar
         else:
             print("\nVocê já avaliou este tópico.")
         
-    #pergunta se quer continuar avaliando
+        #pergunta se quer continuar avaliando
         continua = input("\nVocê deseja fazer uma nova avaliação? (Digite 'sim' ou 'não') ")
         if continua.lower()!="sim" and continua.lower()!="não":
             erro= "Por favor, digite sim ou não."
             raise ValueError
         
-    #exibe as mensagens finais
+    #exibe as mensagens finais: informações do cliente, resumo da operação e agradecimento
     with open(f'usuarios/{email}.json', 'r', encoding='utf-8') as arquivo:
         infocadastro = json.loads(arquivo.read())
     print("*" * 70)
@@ -139,7 +148,7 @@ try:
     #insera avaliações nos documentos de resumo de feedback
     insereFeedback(infocadastro['email'],positivos,negativos,listaSac)
     
-
+# mensagem de erro 
 except ValueError:
     print(f"\n{erro}")
 except FileNotFoundError:
