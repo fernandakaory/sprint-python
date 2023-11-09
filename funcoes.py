@@ -51,17 +51,20 @@ def insereFeedback (email, positivos, negativos, listaSac):
             arquivo.write(email)
             for avaliacao in positivos:
                 arquivo.write(avaliacao)
-            arquivo.write("\n ")
+            arquivo.write("\n")
+            arquivo.write("\n")
 
     if negativos!=[]:
         with open('feedbacks/negativos.txt', 'a',encoding='utf-8 ') as arquivo:
             arquivo.write(email)
             for avaliacao in negativos:
                 arquivo.write(avaliacao)
-            arquivo.write("\n ")
+            arquivo.write("\n")
+            arquivo.write("\n")
     if listaSac!=[]:
         with open('feedbacks/sac.txt', 'a',encoding='utf-8 ') as arquivo:
             arquivo.write(email)
             for mensagens in listaSac:
                 arquivo.write(mensagens)
-            arquivo.write("\n ")
+            arquivo.write("\n")
+            arquivo.write("\n")

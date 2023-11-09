@@ -142,6 +142,7 @@ try:
     print("*" * 70)
     for i in range(len(msgFinal)):
         print(msgFinal[i])
+    print("\n")
     print("*" * 70)
     print("\nObrigada por avaliar os serviços da SmarTech.")
 
