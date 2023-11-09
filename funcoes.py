@@ -25,6 +25,9 @@ def recebeNota(avaliacao, msgFinal, positivos,negativos):
     if nota>0 and nota <= 3:
         print("\nSentimos muito por isso. Por favor, conte-nos o motivo dessa nota.")
         motivo = input()
+        while motivo == "":
+            print("\nO motivo não pode estar vazio. Por favor, digite novamente:")
+            motivo = input()
         print("\nObrigado pelo feedback!")
         msgFinal.append(f"\nVocê avaliou nota {nota} para {avaliacao}.\nMotivo: {motivo}")
         negativos.append(f"\nAvaliou nota {nota} para {avaliacao}.\nMotivo: {motivo}")

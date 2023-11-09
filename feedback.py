@@ -102,10 +102,13 @@ try:
             elif escolha == "5":
                 print("\nInsira a mensagem.")
                 sac = input()
+                while sac == "":
+                    print("\nO campo não pode estar vazio. Por favor, digite novamente:")
+                    sac = input()
                 print("\nIremos responder o mais rápido possível. Obrigado por utilizar nossos serviços.")
                 msgFinal.append(f"\nVocê contatou o SAC.\nMensagem enviada:{sac}")
                 listaSac.append(f"\nContatou o SAC.\nMensagem enviada:{sac}")
-            
+                
             else:
                 erro= "Por favor, digite uma opção válida."
                 raise ValueError
